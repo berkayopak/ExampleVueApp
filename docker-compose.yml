@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  flask:
+    image: 'registry.gitlab.com/iqvizyon/iqv-front-challenge:latest'
+    build: ./iqv-front-challenge-master
+    ports:
+      - '5000:5000'
+    command: web
+  client:
+    image: 'iqv-challenge-client:latest'
+    build:
+      dockerfile: Dockerfile
+      context: ./iqv-frontend/iqv-frontend
+    ports:
+      - '8080:8080'
